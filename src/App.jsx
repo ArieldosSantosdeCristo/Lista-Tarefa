@@ -1,46 +1,38 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import Todo from "./components/Todo";
 import Todoform from './components/Todoform';
 import Search from './components/Search';
 import Filter from './components/Filter';
-
+import axios from 'axios';
 
 import "./App.css";
 
 
 
+
 function App() {
-const [todos,setTodos] = useState([
-  {
-    id: 1,
-    text: "Criar funcionalidades para o sistema",
-    category:"Trabalho",
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    text: "Treinar",
-    category:"Pessoal",
-    isCompleted: false,
-  },
-  {
-    id: 3,
-    text: "Ir a faculdade",
-    category:"Estudo",
-    isCompleted: false,
-  },
-  {
-    id: 4,
-    text: "Exame medico",
-    category:"Pessoal",
-    isCompleted: false,
-  },
-]);
+
+  const [todos,setTodos] = useState([]);
+
+async function getTodos(){
+  const retorno = await axios.get('http://localhost:3000/tarefas');
+  setTodos(retorno.data);
+}
+
+async function deleteTodos(id){
+  const retorno = await axios.delete('http://localhost:3000/deletetarefas/' + id);
+  setTodos(retorno.data);
+}
 
 const [search, setSearch] = useState("");
 
 const [filter, setFilter] = useState("All");
 const [sort, setSort] = useState("Asc");
+
+useEffect(() => {
+  getTodos();
+}, []);
 
 const addTodo= (text, category) => {
   const newtodos = [
