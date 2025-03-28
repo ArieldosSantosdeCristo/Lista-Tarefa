@@ -22,9 +22,9 @@ JavaScript
 
 CSS (para estilização)
 
+Este projeto está usando uma Api conectada ao Banco de dados MongoDB
 
-
-Equipe: Ariel dos Santos de Cristo Góes E Oigabadjud
+Equipe: Ariel dos Santos E Oigabadjud
 
 
 
