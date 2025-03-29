@@ -23,10 +23,15 @@ async function getTodos(){
   setTodos(retorno.data);
 }
 
-async function deleteTodos(id){
-  const retorno = await axios.delete('http://localhost:3000/deletetarefas/' + id);
-  setTodos(retorno.data);
-}
+//async function deleteTodos(id) {
+ // try {
+  //  await axios.delete(`http://localhost:3000/deletetarefas/${id}`);
+  //  getTodos(); 
+  //} catch (error) {
+  //  console.error("Erro ao deletar tarefa:", error);
+//  }
+//}
+
 
 const [search, setSearch] = useState("");
 
